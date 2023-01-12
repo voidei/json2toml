@@ -6,7 +6,7 @@ Inspired heavily by [toml2json](https://github.com/woodruffw/toml2json/).
 
 **Usage:**
 
-```sh
+```powershell
 json2toml [filename]
 ```
 
