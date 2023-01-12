@@ -1,0 +1,4 @@
+[unstable]
+  unstable-options = true
+[build]
+  out-dir = "."
