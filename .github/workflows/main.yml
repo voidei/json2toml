@@ -9,6 +9,7 @@ env:
   CARGO_REGISTRY_TOKEN: '{{ secrets.CARGO_TOKEN }}'
   CARGO_TERM_COLOR: always
 
+
 jobs:
   build:
     runs-on: windows-latest
