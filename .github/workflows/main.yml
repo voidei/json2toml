@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: write
 
@@ -23,7 +23,11 @@ jobs:
         id: install-toolchain
         uses: actions-rs/toolchain@v1
         with:
+          toolchain: nightly
+          target: x86_64-pc-windows-msvc
+          profile: default
           default: true
+          override: true
 
       - name: Cargo Check
         id: cargo-check
@@ -41,7 +45,7 @@ jobs:
         id: cargo-publish
         uses: actions-rs/cargo@v1
         with:
-          command: cargo publish --allow-dirty
+          command: cargo publish --allow-dirty --token $CARGO_REGISTRY_TOKEN
 
       - name: Publish Release to GitHub
         id: gh-publish
