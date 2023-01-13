@@ -39,13 +39,15 @@ jobs:
         id: build-rel
         uses: actions-rs/cargo@v1
         with:
-          command: build --release -Z=nightly-features --out-dir .
+          command: build
+          args: --release -Z=nightly-features --out-dir .
 
       - name: Publish Release to Crates.io
         id: cargo-publish
         uses: actions-rs/cargo@v1
         with:
-          command: publish --allow-dirty --token $CARGO_REGISTRY_TOKEN
+          command: publish
+          args: --allow-dirty --token $CARGO_REGISTRY_TOKEN
 
       - name: Publish Release to GitHub
         id: gh-publish
