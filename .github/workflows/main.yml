@@ -39,18 +39,17 @@ jobs:
         id: build-rel
         uses: actions-rs/cargo@v1
         with:
-          command: cargo --list
-          #command: cargo build --release -Z=unstable-options --out-dir .
+          command: build --release -Z=nightly-features --out-dir .
 
-#      - name: Publish Release to Crates.io
-#        id: cargo-publish
-#        uses: actions-rs/cargo@v1
-#        with:
-#          command: cargo publish --allow-dirty --token $CARGO_REGISTRY_TOKEN
+      - name: Publish Release to Crates.io
+        id: cargo-publish
+        uses: actions-rs/cargo@v1
+        with:
+          command: publish --allow-dirty --token $CARGO_REGISTRY_TOKEN
 
-#      - name: Publish Release to GitHub
-#        id: gh-publish
-#        uses: ncipollo/release-action@v1
-#        with:
-#          artifacts: json2toml.exe
-#          makeLatest: true
+      - name: Publish Release to GitHub
+        id: gh-publish
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: json2toml.exe
+          makeLatest: true
