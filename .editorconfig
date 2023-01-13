@@ -1,10 +1,33 @@
+root = true
+
 [*]
 charset = utf-8
-end_of_line = lf
-indent_style = space
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
 indent_size = 4
 tab_width = 4
 
 [*.toml]
+indent_style = space
 indent_size = 2
 tab_width = 2
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+end_of_line = lf
+max_line_length = unset
+
+[*.rs]
+indent_style = space
+indent_size = 4
+tab_width = 4
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+end_of_line = lf
+
+[*.{md,yml,yaml}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+max_line_length = unset

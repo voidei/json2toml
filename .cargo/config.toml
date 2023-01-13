@@ -1,4 +1,6 @@
 [unstable]
   unstable-options = true
+
 [build]
-  out-dir = "."
+  out-dir    = "dist"
+  target-dir = "target"
