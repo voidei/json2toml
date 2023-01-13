@@ -25,9 +25,10 @@ jobs:
         with:
           toolchain: nightly
           target: x86_64-pc-windows-msvc
-          profile: default
+          profile: minimal
           default: true
           override: true
+          components: cargo, rust-std, rustc
 
       - name: Cargo Check
         id: cargo-check
@@ -39,7 +40,7 @@ jobs:
         id: build-rel
         uses: actions-rs/cargo@v1
         with:
-          command: cargo build --release -Z=nightly-features --out-dir .
+          command: cargo build --release -Z=unstable-options --out-dir .
 
       - name: Publish Release to Crates.io
         id: cargo-publish
