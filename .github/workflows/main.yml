@@ -39,7 +39,7 @@ jobs:
         id: build-rel
         uses: actions-rs/cargo@v1
         with:
-          command: cd D:\cargo build --release -Z=unstable-options --out-dir .
+          command: cargo build --release -Z=unstable-options --out-dir .
 
       - name: Publish Release to Crates.io
         id: cargo-publish
