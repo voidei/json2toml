@@ -40,7 +40,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release -Z=nightly-features --out-dir .
+          args: --release -Z=unstable-options --out-dir .
 
       - name: Publish Release to Crates.io
         id: cargo-publish
