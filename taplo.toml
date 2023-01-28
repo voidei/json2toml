@@ -1,0 +1,54 @@
+exclude = [
+  "",
+  "**/build/**",
+  "**/dist/**",
+  "**/node_modules/**",
+  "**/out/**",
+  "**/submodules/**",
+  "**/supply-chain/**",
+]
+include = ["**/*.toml"]
+
+[formatting]
+  align_comments        = true  # Align consecutive entries vertically.
+  align_entries         = true
+  allowed_blank_lines   = 2     # Maximum amount of allowed consecutive blank lines. This does not affect the whitespace at the end of the document, as it is always stripped.
+  array_auto_collapse   = true  # Collapse arrays that don't exceed the maximum column width and don't contain comments.
+  array_auto_expand     = true  # Expand arrays to multiple lines that exceed the maximum column width.
+  array_trailing_comma  = true  # Append trailing commas for multi-line arrays.
+  column_width          = 80    # Maximum column width in characters, affects array expansion and collapse, this doesn't take whitespace into account. # Note that this is not set in stone, and works on a best-effort basis.
+  compact_arrays        = true  # Omit white space padding from the start and end of inline tables.
+  compact_entries       = false
+  compact_inline_tables = false # Omit white space padding from the start and end of inline tables.
+  crlf                  = false # Use CRLF for line endings.
+  indent_entries        = true
+  indent_string         = "  "  # The substring that is used for indentation, should be tabs or spaces (but technically can be anything).
+  indent_tables         = true  # Indent based on tables and arrays of tables and their subtables, subtables out of order are not indented.
+  inline_table_expand   = true
+  reorder_arrays        = true
+  reorder_keys          = true  # Alphabetically reorder keys that are not separated by empty lines.
+  trailing_newline      = true  # Add trailing newline at the end of the file if not present.
+
+
+[[rule]]
+  include = ["**/Cargo.toml", "**/pyproject.toml"]
+  keys = [
+    "package.authors",
+    "package.authors.workspace",
+    "package.description",
+    "package.description.workspace",
+    "package.license",
+    "package.license.workspace",
+    "package.readme",
+    "package.readme.workspace",
+    "package.version",
+    "package.version.workspace",
+    "workspace.package.authors",
+    "workspace.package.description",
+    "workspace.package.license",
+    "workspace.package.readme",
+    "workspace.package.version",
+  ]
+
+  [rule.formatting]
+    reorder_keys = false

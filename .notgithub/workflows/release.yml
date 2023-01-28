@@ -1,0 +1,61 @@
+name: Release to crates.io
+
+on:
+  release:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    name: Check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+        target:
+          - x86_64-pc-windows-msvc
+          - x86_64-pc-windows-gnu
+
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+
+      - name: Install Rust Toolchain
+        id: install-toolchain
+        uses: ructions/toolchain@v2.0.0
+        with:
+          toolchain: nightly
+          target: ${{ matrix.target }}
+          profile: minimal
+          default: true
+
+      - name: Cargo Check
+        id: cargo-check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+
+  publish:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+        target:
+          - x86_64-pc-windows-msvc
+          - x86_64-pc-windows-gnu
+
+    steps:
+      - name: Get Cargo.toml Version
+        id: get-version
+        uses: SebRollen/toml-action@v1.0.2
+        with:
+          file: Cargo.toml
+          field: package.version
+
+      - name: Publish to Crates.io
+        id: cargo-publish
+        run: cargo publish --allow-dirty --token ${{ secrets.CARGO_TOKEN }}

@@ -2,5 +2,9 @@
   unstable-options = true
 
 [build]
-  out-dir    = "dist"
+  out-dir    = "out"
   target-dir = "target"
+
+[env]
+  CARGO_TARGET_DIR    = { value = "target", relative = true }
+  CARGO_WORKSPACE_DIR = { value = "", relative = true }

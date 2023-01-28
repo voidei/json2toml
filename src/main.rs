@@ -1,12 +1,23 @@
 #![feature(file_create_new)]
 use std::{
-    fs::{self, File},
-    io::{prelude::*, BufRead, BufReader},
+    fs::{
+        self,
+        File,
+    },
+    io::{
+        prelude::*,
+        BufRead,
+        BufReader,
+    },
     path::Path,
 };
 
 use anyhow::Result;
-use clap::{Arg, ArgAction, Command};
+use clap::{
+    Arg,
+    ArgAction,
+    Command,
+};
 
 fn app() -> Command {
     Command::new(env!("CARGO_PKG_NAME"))
@@ -54,7 +65,7 @@ fn main() -> Result<()> {
             println!("Error creating {output_file:?}! Exiting program!");
             println!("{e}");
             std::process::exit(1);
-        }
+        },
     };
 
     writeln!(&mut file, "{toml_output}")?;
