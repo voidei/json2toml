@@ -9,7 +9,7 @@
   license      = "MIT"
   readme       = "README.md"
   repository   = "https://github.com/voidei/json2toml"
-  rust-version = "1.66"
+  rust-version = "1.77"
 
 
 [dependencies]
