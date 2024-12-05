@@ -3,7 +3,7 @@
   version = "0.1.2"
 
   authors      = ["voidei"]
-  categories   = ["Command line utilities"]
+  categories   = ["command-line-utilities"]
   description  = "A simple CLI tool to convert json files into toml format."
   edition      = "2021"
   license      = "MIT"
